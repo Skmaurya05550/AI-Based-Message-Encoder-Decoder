@@ -15,4 +15,4 @@ An interactive website to encode and decode messages using frequency-based encod
 ## How to Run
 1. Download or clone this repository:
    ```bash
-   git clone https://github.com/yourusername/message-encoder-decoder.git
+   git clone https://github.com/skmaurya05550/message-encoder-decoder.git
