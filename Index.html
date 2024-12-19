@@ -1,1 +1,100 @@
-sss
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Based Message Encoder/Decoder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #1c1c1c;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      padding: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 16px;
+      resize: none;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #28a745;
+      color: white;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #218838;
+    }
+    .output {
+      margin-top: 20px;
+      background: #333;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AI-Based Message Encoder/Decoder</h1>
+    <p>Encode your message to a frequency format and decode it back using AI.</p>
+    
+    <textarea id="messageInput" placeholder="Enter your message here..."></textarea>
+    <div>
+      <button onclick="encodeMessage()">Encode</button>
+      <button onclick="decodeMessage()">Decode</button>
+    </div>
+    <div class="output" id="output">
+      <p>Your encoded/decoded message will appear here...</p>
+    </div>
+  </div>
+
+  <script>
+    function encodeMessage() {
+      const input = document.getElementById("messageInput").value;
+      if (!input) {
+        alert("Please enter a message to encode.");
+        return;
+      }
+      let encoded = "";
+      for (let i = 0; i < input.length; i++) {
+        encoded += input.charCodeAt(i) + "-";
+      }
+      encoded = encoded.slice(0, -1); // Remove the last dash
+      document.getElementById("output").innerHTML = `<p>Encoded Message: ${encoded}</p>`;
+    }
+
+    function decodeMessage() {
+      const input = document.getElementById("messageInput").value;
+      if (!input) {
+        alert("Please enter an encoded message to decode.");
+        return;
+      }
+      try {
+        const decoded = input.split("-").map(charCode => String.fromCharCode(charCode)).join("");
+        document.getElementById("output").innerHTML = `<p>Decoded Message: ${decoded}</p>`;
+      } catch {
+        alert("Invalid encoded message format.");
+      }
+    }
+  </script>
+</body>
+</html>
